@@ -1,0 +1,31 @@
+.Loader-wrapper {
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Loader-wrapper h1 {
+  font-size: 3rem;
+}
+
+.Loader {
+  height: 10vw;
+  width: 10vw;
+  border: 30px white solid;
+  border-top: 30px grey solid;
+  border-radius: 50%;
+  margin-bottom: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

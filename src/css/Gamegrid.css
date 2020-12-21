@@ -1,0 +1,12 @@
+.GameGrid-Wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.GameGrid {
+  box-sizing: border-box;
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
