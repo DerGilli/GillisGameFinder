@@ -19,12 +19,11 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar setQuery={handleChange} query={query} />
+
       <Router>
-        <Switch>
-          <Route path="/" exact children={<GameGrid query={query} />}></Route>
-          <Route path="/:slug" children={<Game />}></Route>
-        </Switch>
+        <Navbar setQuery={handleChange} query={query} />
+        <Route path="/" exact children={<GameGrid query={query} />}></Route>
+        <Route path="/:slug" children={<Game />}></Route>
       </Router>
     </div>
   );
