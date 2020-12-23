@@ -7,6 +7,38 @@
   box-sizing: border-box;
   padding: 3rem;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
+}
+
+.GameGrid-Wrapper button {
+  margin: 0 auto 20px auto;
+  padding: 1rem 3rem;
+  font-size: 2rem;
+  color: white;
+  background-color: black;
+  border: 1px black solid;
+}
+
+.GameGrid-Wrapper button:hover {
+  border: 1px white solid;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1400px) {
+  .GameGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .GameGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .GameGrid {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

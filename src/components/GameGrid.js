@@ -6,36 +6,44 @@ import {
 } from "react-router-dom";
 import Loader from './Loader';
 
-function GameGrid() {
+function GameGrid({ query }) {
 
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({});
+  const [games, setGames] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  useEffect(() => {
-    if (data.length < 1) {
-      fetchData().then((data) => {
-        setData(data.results)
+  const handleClick = () => {
+    if (data.next) {
+      fetchNext(data.next).then((resData) => {
+        setData(resData)
+        setGames(games.concat(resData.results))
       })
     }
-  }, [])
+  }
 
-  if (data.length > 0 && !isLoaded) {
+  useEffect(() => {
+    fetchData(query).then((resData) => {
+      setData(resData)
+      setGames(resData.results)
+    })
+  }, [query])
+
+  if (data.results?.length > 0 && !isLoaded) {
     setIsLoaded(true)
   }
 
   if (isLoaded) {
     return (
       <div className="GameGrid-Wrapper">
-        <div className="Sidebar">
-
-        </div>
         <div className="GameGrid">
-          {data.map((game, idx) => {
+          {games.map((game, idx) => {
             return <Link key={idx} to={"/" + game.slug} >{GameCard(game)}</Link>
           })}
         </div>
+        <button onClick={handleClick}>Load more</button>
       </div>
+
     )
   } else {
     return <Loader />
@@ -43,37 +51,12 @@ function GameGrid() {
 }
 
 
-function fetchData() {
-  //Try to get the Collection from local Storage. Request data from API if not succesful.
-
-  //let gameCollection = []
-  //gameCollection = JSON.parse(localStorage.getItem("games"));
-  // if (!gameCollection.length > 0) {
-  //   gameCollection = fetchAsync()
-  // }
-  //return gameCollection
-
-  return fetch(`https://api.rawg.io/api/games?key=a7fa218298c14aa19d0190447e2f279c&page_size=40`).then((res) => res.json())
-
+function fetchData(query) {
+  return fetch(`https://api.rawg.io/api/games?key=a7fa218298c14aa19d0190447e2f279c&search=${query}&ordering=-added&search_exact=true&page_size=20`).then((res) => res.json())
 }
 
-// async function fetchAsync() {
-//   let gameCollection = []
-//   let i = 0;
-//   let query = `https://api.rawg.io/api/games?key=a7fa218298c14aa19d0190447e2f279c&page_size=20`
-//   while (i < 5) {
-//     await fetch(query)
-//       .then(response => response.json())
-//       .then(data => {
-//         gameCollection = gameCollection.concat(data.results);
-//         query = data.next
-//       }
-//       )
-//       .catch(err => console.log(err));
-//     i++
-//   }
-//   localStorage.setItem("games", JSON.stringify(gameCollection))
-//   return gameCollection
-// }
+function fetchNext(query) {
+  return fetch(query).then((res) => res.json())
+}
 
 export default GameGrid;

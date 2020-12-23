@@ -8,10 +8,12 @@
   border-radius: 10px;
   box-shadow: 0 0 10px black;
   color: white;
+  transition: transform ease 0.5s;
 }
 
 .GameCard:hover {
   cursor: pointer;
+  transform: scale(1.05);
 }
 
 .GameCard .details {

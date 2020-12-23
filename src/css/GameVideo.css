@@ -3,9 +3,12 @@
 }
 
 .video-container {
-  width: 100%;
+  width: fit-content;
   display: flex;
-  align-items: center;
+  justify-content: center;
+  float: left;
+  padding-right: 20px;
+  padding-bottom: 20px;
 }
 
 .alt-video {
@@ -14,4 +17,10 @@
   justify-content: center;
   border: 1px white solid;
   height: 250px;
+}
+
+@media only screen and (max-width: 700px) {
+  .video-container {
+    padding-right: 0;
+  }
 }

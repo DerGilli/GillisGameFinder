@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 .App {
-  display: grid;
-  grid-template-columns: 1fr;
   font-family: Roboto, Helvetica, sans-serif;
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
   text-align: center;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.App .wrapper {
+  flex: 1 1 auto;
 }
 
 h1 {
@@ -14,10 +18,4 @@ h1 {
   text-transform: uppercase;
   font-size: 5rem;
   font-weight: 100;
-}
-
-@media only screen and (min-width: 1400px) {
-  .App {
-    grid-template-columns: 2fr 8fr;
-  }
 }

@@ -7,8 +7,21 @@
   align-items: center;
   padding: 20px 0;
   background-color: black;
+  box-shadow: 0 0px 10px gray;
+  z-index: 100;
 }
 
 .Navbar a {
   color: white;
+}
+
+.searchbar {
+  width: 300px;
+  padding: 0.5rem 1rem;
+  margin-top: 10px;
+  font-size: 1rem;
+  border-radius: 2px;
+  border-radius: 2rem;
+  background-color: #afafaf;
+  border: none;
 }

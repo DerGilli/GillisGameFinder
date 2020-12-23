@@ -5,7 +5,7 @@ import Loader from "./Loader";
 
 function GameVideo(props) {
 
-  const [video, setVideo] = useState()
+  const [video, setVideo] = useState([])
 
   useEffect(() => {
     getVideo(props.slug).then((data) => {
@@ -18,7 +18,13 @@ function GameVideo(props) {
   } else if (video.length > 0) {
     return (
       <div className="video-container">
-        <YouTube videoId={video[0].id.videoId} opts={{ playerVars: { autoplay: 1, mute: 1, loop: 1 } }} />
+        <YouTube
+          videoId={video[0].id.videoId}
+          opts={{
+            height: '200',
+            width: '300',
+            playerVars: { autoplay: 1, mute: 1 }
+          }} />
       </div>
     )
   } else {
@@ -29,7 +35,7 @@ function GameVideo(props) {
 }
 
 async function getVideo(slug) {
-  const res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?q=${slug}%20trailer&key=AIzaSyBf3oikkPa1tMrmMcShCutgtx6HNvQMbaY`).catch((err) => console.log(err));
+  const res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?maxResults=1&q=${slug}%20videogame-trailer&key=AIzaSyBf3oikkPa1tMrmMcShCutgtx6HNvQMbaY`).catch((err) => console.log(err));
   return await res.json().catch((err) => console.log(err));
 }
 
