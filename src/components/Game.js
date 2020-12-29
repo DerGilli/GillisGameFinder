@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import "../css/Game.css"
 import Iconbar from "./Iconbar";
 import Loader from "./Loader";
+import GameVideo from './GameVideo'
 import ScreenshotGallery from "./ScreenshotGallery";
 
 const parse = require('html-react-parser');
@@ -47,7 +48,7 @@ function Game() {
             <Iconbar redditLink={game.reddit_url} website={game.website} />
           </div>
           <div className="content-details">
-            {/* <GameVideo slug={slug} /> */}
+            <GameVideo slug={slug} />
             {gameDescription()}
           </div>
         </div>

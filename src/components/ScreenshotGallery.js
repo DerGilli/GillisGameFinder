@@ -1,16 +1,39 @@
 import React from 'react'
 import '../css/ScreenshotGallery.css'
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-export default (props) => {
+// Import Swiper styles
+import 'swiper/swiper.scss';
+const ScreenshotGallery = (props) => {
   if (props.screenshots.length > 0) {
     return (
       <div className="ScreenshotGallery">
-        {props.screenshots.map((screenshot, idx) => {
-          return <img key={idx} src={screenshot.image} />
-        })}
+        <Swiper
+          spaceBetween={20}
+          slidesPerView={1.5}
+          loop={true}
+          autoplay={true}
+          centeredSlides={true}
+          breakpoints={{
+            640: {
+              slidesPerView: 2.5
+            },
+            1200: {
+              slidesPerView: 4.5
+            }
+          }}>
+          {props.screenshots.map((screenshot, idx) => {
+            return (
+              <SwiperSlide key={idx}>
+                <img src={screenshot.image} alt="game screenshot"></img>
+              </SwiperSlide>
+            )
+          })}
+        </Swiper>
       </div>
     )
   } else {
 
   }
 }
+export default ScreenshotGallery;

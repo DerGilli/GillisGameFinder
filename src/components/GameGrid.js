@@ -8,6 +8,7 @@ import Loader from './Loader';
 
 function GameGrid({ query }) {
 
+  require('dotenv').config();
 
   const [data, setData] = useState({});
   const [games, setGames] = useState([]);
@@ -52,7 +53,7 @@ function GameGrid({ query }) {
 
 
 function fetchData(query) {
-  return fetch(`https://api.rawg.io/api/games?key=a7fa218298c14aa19d0190447e2f279c&search=${query}&ordering=-added&search_exact=true&page_size=20`).then((res) => res.json())
+  return fetch(`https://api.rawg.io/api/games?key=${process.env.REACT_APP_RAWG_KEY}&search=${query}&ordering=-added&search_exact=true&page_size=20`).then((res) => res.json())
 }
 
 function fetchNext(query) {

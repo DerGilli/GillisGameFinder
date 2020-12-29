@@ -3,7 +3,6 @@ import "../css/Navbar.css"
 import {
   Link
 } from "react-router-dom";
-import { withRouter } from 'react-router'
 
 function Navbar({ query, setQuery }) {
 

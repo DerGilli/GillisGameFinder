@@ -5,6 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex: 1 1 auto;
 }
 
 .Loader-wrapper h1 {

@@ -3,19 +3,38 @@ import YouTube from 'react-youtube'
 import "../css/GameVideo.css"
 import Loader from "./Loader";
 
-function GameVideo(props) {
+function GameVideo({ slug }) {
 
   const [video, setVideo] = useState([])
+  const [error, setError] = useState(null)
+
+  const getVideo = async (slug) => {
+    const res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?maxResults=1&q=${slug}%20videogame-trailer&key=${process.env.REACT_APP_YT_KEY}`);
+    return await res.json();
+
+  }
 
   useEffect(() => {
-    getVideo(props.slug).then((data) => {
-      setVideo(data.items)
-    })
-  }, [])
+    try {
+      if (isNaN(slug)) {
+        getVideo(slug).then((data) => {
+          setVideo(data.items)
+        })
+      } else {
+        setError("We do not fetch videos for randomized games")
+      }
+    } catch (error) {
+      console.log(error)
+      setError(error)
+    }
 
-  if (typeof video === "undefined") {
+  }, [slug])
+
+  if (error !== null) {
+    return <div ></div>
+  } else if (video.length === 0) {
     return <Loader />
-  } else if (video.length > 0) {
+  } else {
     return (
       <div className="video-container">
         <YouTube
@@ -27,16 +46,7 @@ function GameVideo(props) {
           }} />
       </div>
     )
-  } else {
-    return (
-      <div className="alt-video">no video available :(</div>
-    )
   }
-}
-
-async function getVideo(slug) {
-  const res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?maxResults=1&q=${slug}%20videogame-trailer&key=AIzaSyBf3oikkPa1tMrmMcShCutgtx6HNvQMbaY`).catch((err) => console.log(err));
-  return await res.json().catch((err) => console.log(err));
 }
 
 export default GameVideo;
