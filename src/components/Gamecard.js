@@ -1,4 +1,3 @@
-import React from 'react';
 import "../css/Gamecard.css";
 
 function GameCard(myGame) {
@@ -11,13 +10,7 @@ function GameCard(myGame) {
           <tbody>
             <tr>
               <td>Genre:</td>
-              <td>{myGame.genres.map((x, i) => {
-                if (i !== myGame.genres.length - 1) {
-                  return x.name + ", "
-                } else {
-                  return x.name
-                }
-              })}</td>
+              <td>{myGame.genres.map(genre => genre.name).join(", ")}</td>
             </tr>
             <tr>
               <td>Release Date:</td>

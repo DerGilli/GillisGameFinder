@@ -1,6 +1,6 @@
 import React from 'react'
-import '../css/ScreenshotGallery.css'
 import { Swiper, SwiperSlide } from 'swiper/react';
+import '../css/ScreenshotGallery.css'
 
 // Import Swiper styles
 import 'swiper/swiper.scss';

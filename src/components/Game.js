@@ -1,45 +1,41 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
-//import GameVideo from "./GameVideo";
-import "../css/Game.css"
 import Iconbar from "./Iconbar";
 import Loader from "./Loader";
 import GameVideo from './GameVideo'
 import ScreenshotGallery from "./ScreenshotGallery";
-
+import "../css/Game.css"
+require('dotenv').config();
 const parse = require('html-react-parser');
 
 function Game() {
 
   const [game, setGame] = useState();
+  const [gameIsSet, setgameIsSet] = useState(false)
   const { slug } = useParams();
   const [screenshots, setScreenshots] = useState([]);
 
+  //use this function in order to be able to use await, just because its prettier then .then().
+  //Call this  function inside useEffect with a slug dependency so it updated automatically
+  async function initalize(slug){
+    setgameIsSet(false)
+    const gameData = await getGameData(slug)
+    if (!gameData.redirect) {
+      setGame(gameData)
+      setgameIsSet(true)
+        const screenshotData = await getScreenshots(slug)
+          setScreenshots(screenshotData.results)
+        }
+    }      
+
+  // As described above just call initialize.
   useEffect(() => {
-    getData(slug).then((data) => {
-      if (!data.redirect) {
-        setGame(data)
-        getScreenshots(slug).then((data) => {
-          setScreenshots(data.results)
-        })
-      }
-    })
-
-  }, [slug])
-
-
-
-  if (typeof game === "undefined") {
+      initalize(slug)}
+  , [slug])
+  
+  if (!gameIsSet) {
     return <Loader />
   } else {
-    const gameDescription = () => {
-      try {
-        return parse(game.description)
-      } catch (error) {
-        console.log(error)
-        return "no description available"
-      }
-    }
     return (
       <div style={{ backgroundImage: "linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.5)),  url(" + game.background_image_additional + ")" }} className="wrapper">
         <div className="content">
@@ -49,7 +45,7 @@ function Game() {
           </div>
           <div className="content-details">
             <GameVideo slug={slug} />
-            {gameDescription()}
+            {game.description && parse(game.description)}
           </div>
         </div>
         {screenshots.length ? <ScreenshotGallery screenshots={screenshots} /> : <div></div>}
@@ -58,15 +54,13 @@ function Game() {
   }
 }
 
-async function getData(slug) {
-  console.log("caching data")
-  const response = await fetch(`https://api.rawg.io/api/games/${slug}?key=a7fa218298c14aa19d0190447e2f279c`).catch((err) => console.log(err));
+async function getGameData(slug) {
+  const response = await fetch(`https://api.rawg.io/api/games/${slug}?key=${process.env.REACT_APP_RAWG_KEY}`).catch((err) => console.log(err));
   return await response.json();
 }
 
 async function getScreenshots(slug) {
-  console.log("caching screenshot")
-  const response = await fetch(`https://api.rawg.io/api/games/${slug}/screenshots?key=a7fa218298c14aa19d0190447e2f279c`).catch((err) => console.log(err));
+  const response = await fetch(`https://api.rawg.io/api/games/${slug}/screenshots?key=${process.env.REACT_APP_RAWG_KEY}`).catch((err) => console.log(err));
   return await response.json();
 }
 

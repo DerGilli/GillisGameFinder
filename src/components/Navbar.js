@@ -1,8 +1,6 @@
 import { useState } from 'react'
+import { Link } from "react-router-dom";
 import "../css/Navbar.css"
-import {
-  Link
-} from "react-router-dom";
 
 function Navbar({ query, setQuery }) {
 
@@ -27,7 +25,6 @@ function Navbar({ query, setQuery }) {
         </input>
         <Link to={"/" + randomNumber} onClick={(e) => handleOnClick(e)}> <button>Randomizer</button></Link>
       </div>
-
     </div>
   )
 }

@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrophy, faGlobe, faStar } from "@fortawesome/free-solid-svg-icons";
 import { faRedditAlien } from '@fortawesome/free-brands-svg-icons'
 import '../css/Iconbar.css'
+
 const Iconbar = ({ redditLink, website }) => {
   return (
     <div className="Iconbar">

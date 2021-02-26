@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import YouTube from 'react-youtube'
-import "../css/GameVideo.css"
 import Loader from "./Loader";
+import "../css/GameVideo.css"
 
 function GameVideo({ slug }) {
 
@@ -30,8 +30,8 @@ function GameVideo({ slug }) {
 
   }, [slug])
 
-  if (error !== null) {
-    return <div ></div>
+  if (error) {
+    return <div></div>
   } else if (video.length === 0) {
     return <Loader />
   } else {
