@@ -33,7 +33,7 @@ const ScreenshotGallery = (props) => {
       </div>
     )
   } else {
-
+    return null
   }
 }
 export default ScreenshotGallery;
