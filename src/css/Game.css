@@ -1,56 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 .wrapper {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	overflow: hidden;
 }
 
 .content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 10px;
-  padding-top: 30px;
-  flex: 1 1 auto;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2rem;
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 10px;
+	padding-top: 30px;
+	flex: 1 1 auto;
 }
 
 .content .header {
-  width: fit-content;
-  margin: 0 auto;
+	width: fit-content;
+	margin: 0 auto;
 }
 
 h2 {
-  font-family: 'VT323', monospace;
-  font-weight: 100;
-  font-size: 3rem;
-  text-align: center;
-  padding-bottom: 10px;
+	font-family: 'VT323', monospace;
+	font-weight: 100;
+	font-size: 3rem;
+	text-align: center;
+	padding-bottom: 10px;
 }
 
 .content p {
-  font-size: 1rem;
-  line-height: 1.6rem;
-  text-align: start;
-  margin: auto;
+	font-size: 1rem;
+	line-height: 1.6rem;
+	text-align: start;
+	margin: auto;
 }
 
 @media only screen and (max-width: 700px) {
-  .content {
-    grid-template-columns: repeat(1, 1fr);
-    background-color: rgba(0, 0, 0, 0);
-  }
-  .content h2 {
-    grid-column: 1;
-  }
-  .content-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+	.content {
+		grid-template-columns: repeat(1, 1fr);
+		background-color: rgba(0, 0, 0, 0);
+	}
+	.content h2 {
+		grid-column: 1;
+	}
+	.content-details {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 }

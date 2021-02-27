@@ -1,29 +1,29 @@
 .video-container video {
-  width: 100%;
+	width: 100%;
 }
 
 .video-container {
-  width: fit-content;
-  display: flex;
-  justify-content: center;
-  float: left;
-  padding-right: 20px;
-  padding-bottom: 20px;
+	width: fit-content;
+	display: flex;
+	justify-content: center;
+	float: left;
+	padding-right: 20px;
+	padding-bottom: 20px;
 }
 
 .alt-video {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px white solid;
-  height: 130px;
-  width: 130px;
-  margin-right: 20px;
-  float: left;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px white solid;
+	height: 130px;
+	width: 130px;
+	margin-right: 20px;
+	float: left;
 }
 
 @media only screen and (max-width: 700px) {
-  .video-container {
-    padding-right: 0;
-  }
+	.video-container {
+		padding-right: 0;
+	}
 }

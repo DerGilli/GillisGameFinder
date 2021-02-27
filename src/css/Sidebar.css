@@ -1,21 +1,21 @@
 .Sidebar {
-  display: none;
+	display: none;
 }
 
 @media only screen and (min-width: 1400px) {
-  .Sidebar {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    height: 100%;
-    background-color: black;
-    grid-row: 1 / 3;
-  }
+	.Sidebar {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+		height: 100%;
+		background-color: black;
+		grid-row: 1 / 3;
+	}
 }
 
 .content-wrapper {
-  height: 100%;
-  width: 100%;
-  padding: 20px;
+	height: 100%;
+	width: 100%;
+	padding: 20px;
 }

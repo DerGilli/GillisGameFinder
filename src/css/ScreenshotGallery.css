@@ -1,17 +1,17 @@
 .ScreenshotGallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  padding: 20px 0;
-  box-shadow: 0 0 10px gray;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+	padding: 20px 0;
+	box-shadow: 0 0 10px gray;
 }
 
 .swiper-container {
-  width: 100%;
+	width: 100%;
 }
 
 .swiper-container img {
-  width: 100%;
+	width: 100%;
 }

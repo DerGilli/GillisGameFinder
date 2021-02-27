@@ -1,21 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 .App {
-  font-family: Roboto, Helvetica, sans-serif;
-  background-color: #3f3f3f;
-  color: white;
-  text-align: center;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+	font-family: Roboto, Helvetica, sans-serif;
+	background-color: #3f3f3f;
+	color: white;
+	text-align: center;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 .App .wrapper {
-  flex: 1 1 auto;
+	flex: 1 1 auto;
 }
 
 h1 {
-  font-family: 'VT323', monospace;
-  text-transform: uppercase;
-  font-size: 5rem;
-  font-weight: 100;
+	font-family: 'VT323', monospace;
+	text-transform: uppercase;
+	font-size: 5rem;
+	font-weight: 100;
 }
